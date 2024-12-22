@@ -1,0 +1,74 @@
+/* Global Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    margin-bottom: 15px;
+}
+
+ul {
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    font-size: 1rem;
+    margin-left: 10px;
+}
+
+.nav-link:hover {
+    color: #ff7043;
+}
+
+.bg-primary{
+    color: #005fa3;
+}
+
+
+/* Hero Section */
+.bg-primary {
+    background: linear-gradient(to right, #005fa3, #005fa3);
+}
+
+header img {
+    border-radius: 15px;
+}
+
+/* Buttons */
+.btn-warning {
+    background-color: #ff7043;
+}
+
+.btn-outline-light:hover {
+    background-color: #ff7043;
+    color: #fff;
+}
+
+/* Hero Section */
+.bg-primary {
+    background: linear-gradient(to right, #005fa3, #005fa3);
+}
+
+
+
+.text-primary {
+    color: #005fa3 !important;
+}
+
+
+
+
+/* Footer */
+footer {
+    font-size: 0.9rem;
+}

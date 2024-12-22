@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Healthcare Facilities</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles4.css">
+</head>
+<body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="/static/images/icon 1.png" alt="Logo" width="50">
+                    <span class="fw-bold text-primary">Smart Healthcare Assistant</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/chatbot">Chatbot</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about-us">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/nearby_facilities">Nearby Facilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    <!-- Header Section -->
+    <header class="container mt-5 text-center">
+        <h1 class="fw-bold text-primary">Find Nearby Healthcare Facilities</h1>
+        <p class="text-muted">Explore nearby clinics, hospitals, and labs with ease.</p>
+    </header>
+
+    <!-- Sort By Section -->
+    <div class="container mt-4">
+        <div class="d-flex align-items-center mb-4">
+            <label for="sort-by" class="me-2 fw-bold">Sort By:</label>
+            <select id="sort-by" class="form-select w-auto">
+                <option value="recommended">Recommended</option>
+                <option value="popularity">Popularity</option>
+                <option value="rating">Rating</option>
+                <option value="nearby">Nearby</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="container" id="results">
+        <div class="text-center">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-light text-center py-3 mt-5">
+        <p>&copy; 2024 Smart Healthcare Chatbot. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        navigator.geolocation.getCurrentPosition(function (position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+
+            const sortBySelect = document.getElementById('sort-by');
+            const resultsDiv = document.getElementById('results');
+
+            function fetchAndDisplayResults() {
+                const sortBy = sortBySelect.value;
+
+                // Show loading spinner
+                resultsDiv.innerHTML = `
+                    <div class="text-center">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                `;
+
+                fetch(`/get_all_locations?lat=${lat}&lon=${lon}&sort_by=${sortBy}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        resultsDiv.innerHTML = '';
+
+                        data.forEach(category => {
+                            const categorySection = document.createElement('div');
+                            categorySection.className = 'mb-4';
+
+                            const categoryTitle = document.createElement('h2');
+                            categoryTitle.className = 'fw-bold text-secondary border-bottom pb-2';
+                            categoryTitle.textContent = category.category;
+                            categorySection.appendChild(categoryTitle);
+
+                            const row = document.createElement('div');
+                            row.className = 'row g-4';
+
+                            category.results.forEach(result => {
+                                const col = document.createElement('div');
+                                col.className = 'col-md-6 col-lg-4';
+
+                                const card = document.createElement('div');
+                                card.className = 'card shadow h-100';
+                                card.innerHTML = `
+                                    <img src="${result.image_url || 'https://via.placeholder.com/300'}" alt="${result.name}" class="card-img-top" style="height: 200px; object-fit: cover;">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${result.name}</h5>
+                                        <p class="card-text"><strong>Address:</strong> ${result.vicinity}</p>
+                                        <p><strong>Rating:</strong> ${result.rating} ⭐</p>
+                                        <p><strong>Reviews:</strong> ${result.user_ratings_total}</p>
+                                        <p><strong>Distance:</strong> ${result.distance} km</p>
+                                        <a href="${result.map_link}" target="_blank" class="btn btn-primary">View on Google Maps</a>
+                                    </div>
+                                `;
+                                col.appendChild(card);
+                                row.appendChild(col);
+                            });
+
+                            categorySection.appendChild(row);
+                            resultsDiv.appendChild(categorySection);
+                        });
+                    });
+            }
+
+            // Fetch results on sort-by change
+            sortBySelect.addEventListener('change', fetchAndDisplayResults);
+
+            // Initial fetch
+            fetchAndDisplayResults();
+        });
+    </script>
+</body>
+</html>

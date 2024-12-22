@@ -1,0 +1,6 @@
+flask
+openai
+python-dotenv
+googlemaps
+requests
+gunicorn==21.2.0
