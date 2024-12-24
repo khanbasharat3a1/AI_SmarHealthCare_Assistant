@@ -96,7 +96,7 @@ def fetch_places(location, radius, category_type):
 def get_all_locations():
     lat = float(request.args.get('lat'))
     lon = float(request.args.get('lon'))
-    sort_by = request.args.get('sort_by', 'popularity')
+    sort_by = request.args.get('sort_by', 'recommended')
     user_location = (lat, lon)
     radius = 8000  # Search radius in meters
     all_results = []
@@ -134,8 +134,26 @@ def get_all_locations():
         elif sort_by == "nearby":
             results.sort(key=lambda x: x["distance"])
         elif sort_by == "recommended":
-            results = [r for r in results if r["rating"] >= 4]  # Filter high-rated places
-            results.sort(key=lambda x: x["rating"] * x["user_ratings_total"], reverse=True)
+            if results:  # Ensure results have required fields for scoring
+                max_distance = max(r.get("distance", 1) for r in results) or 1  # Avoid division by zero
+
+                for r in results:
+                    # Extract or default values
+                    rating = r.get("rating", 0)
+                    reviews = r.get("user_ratings_total", 0)
+                    distance_km = r.get("distance", 1)  # Default distance to 1 km if not provided
+                    has_image = bool(r.get("photos", []))  # Check if photos exist
+
+                    # Calculate individual parameter scores
+                    rating_reviews_score = 0.4 * (rating * reviews)
+                    image_penalty = 0.3 if not has_image else 0
+                    distance_score = 0.3 * (1 / distance_km if distance_km > 0 else 0)
+
+                    # Calculate total score
+                    r["total_score"] = rating_reviews_score - image_penalty + distance_score
+
+                # Sort results by total score in descending order
+                results.sort(key=lambda x: x["total_score"], reverse=True)
 
         all_results.append({"category": category_name, "results": results[:8]})
 

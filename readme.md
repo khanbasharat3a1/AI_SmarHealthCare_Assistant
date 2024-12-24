@@ -128,12 +128,15 @@ Smart-Healthcare-Assistant/
 
 ## Recommendations Algorithm
 
-The system uses a sophisticated ranking algorithm:
+The system uses an updated sophisticated ranking algorithm:
+
 ```
-Recommended Score = (Rating × Number of Reviews) + Distance Factor
+Total Score = 0.4 × (Rating × Number of Reviews) + 0.3 × Image Penalty + 0.3 × (1 / Distance in km)
 Where:
-- Rating must be ≥ 4.0
-- Distance Factor = 1/distance_in_km
+
+- Rating × Number of Reviews: Gives more weight to highly rated places with many reviews.
+- Image Penalty: A penalty of 0.3 is applied if the place does not have images (Image Penalty = 1 if no images, otherwise 0).
+- Distance Factor: Favors closer places using the inverse of the distance in km.
 ```
 
 ## Contact
