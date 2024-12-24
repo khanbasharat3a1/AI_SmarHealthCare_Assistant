@@ -124,6 +124,7 @@ def get_all_locations():
                 "distance": distance,
                 "image_url": image_url,
                 "map_link": f"https://www.google.com/maps/place/?q=place_id:{place['place_id']}"
+
             })
 
         # Sort based on requested sorting criteria
