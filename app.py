@@ -96,7 +96,7 @@ def get_all_locations():
     lon = float(request.args.get('lon'))
     sort_by = request.args.get('sort_by', 'popularity')
     user_location = (lat, lon)
-    radius = 5000  # Search radius in meters
+    radius = 8000  # Search radius in meters
     all_results = []
 
     for category_name, category_type in categories.items():
@@ -138,9 +138,6 @@ def get_all_locations():
         all_results.append({"category": category_name, "results": results[:8]})
 
     return jsonify(all_results)
-
-
-
 
 
 
