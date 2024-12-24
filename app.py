@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 load_dotenv() 
 
 
+
 app = Flask(__name__)
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -57,6 +58,7 @@ categories = {
     "Diagnostic Centers": "doctor",
     "Rehabilitation Centers": "physiotherapist",
 }
+
 
 
 @app.route('/nearby_facilities')
@@ -138,6 +140,7 @@ def get_all_locations():
         all_results.append({"category": category_name, "results": results[:8]})
 
     return jsonify(all_results)
+
 
 
 
