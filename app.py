@@ -123,7 +123,11 @@ def get_all_locations():
                 "user_ratings_total": place.get("user_ratings_total", 0),
                 "distance": distance,
                 "image_url": image_url,
-                "map_link": f"https://www.google.com/maps/place/?q=place_id:{place['place_id']}"
+                "map_link": f"https://www.google.com/maps/search/?api=1&query_place_id={place['place_id']}&query={place.get('name')}"
+
+
+
+
 
             })
 
