@@ -1,3 +1,6 @@
+// First, add marked library in the head section of chatbot.html right before the closing </head> tag:
+// <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 function sendMessage() {
     const userInput = document.getElementById('user-input').value.trim();
     const chatbox = document.getElementById('chatbox');
@@ -50,11 +53,14 @@ function sendMessage() {
                     typingIndicator.remove();
                 }
 
+                // Convert markdown to HTML using marked
+                const formattedReply = marked.parse(data.reply);
+
                 // Add bot's message to the chatbox
                 chatbox.innerHTML += `
                     <div class="message bot">
                         <span class="label">Bot</span>
-                        <p>${data.reply}</p>
+                        <div class="markdown-content">${formattedReply}</div>
                     </div>
                 `;
 
@@ -70,3 +76,10 @@ function sendMessage() {
             });
     }
 }
+
+// Add event listener for Enter key
+document.getElementById('user-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
