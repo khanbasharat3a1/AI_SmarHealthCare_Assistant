@@ -19,10 +19,10 @@ function sendMessage() {
         // Clear input field
         document.getElementById('user-input').value = '';
 
-        // Auto-scroll chatbox to the bottom
+        // Auto Scrolling
         chatbox.scrollTop = chatbox.scrollHeight;
 
-        // Show loading indicator inside chatbox
+        // loading indicator
         chatbox.innerHTML += `
             <div id="typing-indicator" class="message bot">
                 <span class="label">Bot</span>
@@ -31,10 +31,10 @@ function sendMessage() {
             </div>
         `;
 
-        // Auto-scroll after adding the loading indicator
+        // Auto-scroll
         chatbox.scrollTop = chatbox.scrollHeight;
 
-        // Simulate API call to get bot response
+        // API CAll to main.py
         fetch('/get_response', {
             method: 'POST',
             headers: {
@@ -44,7 +44,7 @@ function sendMessage() {
         })
             .then(response => response.json())
             .then(data => {
-                // Remove typing indicator
+                // Removes typing indicator
                 const typingIndicator = document.getElementById('typing-indicator');
                 if (typingIndicator) {
                     typingIndicator.remove();
@@ -61,7 +61,7 @@ function sendMessage() {
                     </div>
                 `;
 
-                // Auto-scroll chatbox to the bottom
+                // Auto-scroll
                 chatbox.scrollTop = chatbox.scrollHeight;
             })
             .catch(() => {

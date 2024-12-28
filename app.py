@@ -1,14 +1,12 @@
 import os
 from openai import OpenAI
 from flask import Flask, render_template, request, jsonify
-import googlemaps
 import math
 import requests
 from dotenv import load_dotenv
 
 
 load_dotenv() 
-
 
 
 app = Flask(__name__)
@@ -63,10 +61,9 @@ categories = {
 
 @app.route('/nearby_facilities')
 def index():
-    # Serve the frontend
     return render_template('nearby_facilities.html')
 
-# Helper function to calculate distance
+# Distance calculation function
 def calculate_distance(user_location, facility_location):
     lat1, lon1 = user_location
     lat2, lon2 = facility_location
@@ -77,7 +74,7 @@ def calculate_distance(user_location, facility_location):
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     return round(R * c, 2)
 
-# Helper function to fetch places by category
+# Fetchs places by category
 def fetch_places(location, radius, category_type):
     url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
     params = {
@@ -131,7 +128,7 @@ def get_all_locations():
 
             })
 
-        # Sort based on requested sorting criteria
+        # Sorting based on sorting criteria
         if sort_by == "rating":
             results.sort(key=lambda x: x["rating"], reverse=True)
         elif sort_by == "popularity":
@@ -149,12 +146,12 @@ def get_all_locations():
                     distance_km = r.get("distance", 1)  # Default distance to 1 km if not provided
                     has_image = bool(r.get("photos", []))  # Check if photos exist
 
-                    # Calculate individual parameter scores
+                    # Recommedation formulla based on weightage
                     rating_reviews_score = 0.4 * (rating * reviews)
                     image_penalty = 0.3 if not has_image else 0
                     distance_score = 0.3 * (1 / distance_km if distance_km > 0 else 0)
 
-                    # Calculate total score
+                    # total score
                     r["total_score"] = rating_reviews_score - image_penalty + distance_score
 
                 # Sort results by total score in descending order
@@ -163,7 +160,6 @@ def get_all_locations():
         all_results.append({"category": category_name, "results": results[:8]})
 
     return jsonify(all_results)
-
 
 
 
