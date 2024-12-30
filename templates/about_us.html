@@ -6,16 +6,144 @@
     <title>About Us - Smart Healthcare Assistant</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="static/css/styles3.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .navbar {
+            background: linear-gradient(to right, #ffffff, #f8f9fa);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-link {
+            position: relative;
+            font-size: 1.1rem;
+            margin: 0 10px;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #005fa3;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #005fa3 0%, #0093E9 100%);
+            padding: 4rem 0;
+            color: white;
+            border-radius: 0 0 50px 50px;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            border: none;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 95, 163, 0.1);
+        }
+
+        .feature-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 15px;
+            object-fit: cover;
+            border: 3px solid #f8f9fa;
+        }
+
+        .section-title {
+            color: #005fa3;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: #005fa3;
+        }
+
+        .limitation-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #005fa3;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .limitation-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #005fa3 0%, #0093E9 100%);
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 2rem 0;
+                border-radius: 0 0 25px 25px;
+            }
+
+            .feature-card {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="/">
-                <img src="/static/images/icon 1.png" alt="Logo" width="50">
-                <span class="fw-bold text-primary">Smart Healthcare Assistant</span>
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="/static/images/icon 1.png" alt="Logo" width="50" class="me-2">
+                <span class="fw-bold" style="color: #005fa3">Smart Healthcare Assistant</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -31,64 +159,66 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">About Smart Healthcare Assistant</h1>
+            <p class="lead mb-0">Your AI-powered healthcare companion for a better medical journey</p>
+        </div>
+    </section>
 
-    <!-- About Us Section -->
-    <div class="container mt-5">
-        <header class="text-center mb-5">
-            <h1 style="color: #005fa3; font-weight: 700;">About Smart Healthcare Assistant</h1>
-            <p class="text-muted">Your AI-powered healthcare assistant designed to simplify and enhance your healthcare journey.</p>
-        </header>
-
-        <!-- about section -->
+    <!-- Main Content -->
+    <div class="container">
+        <!-- About Section -->
         <section class="mb-5">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h2>What is Smart Healthcare Assistant?</h2>
-                    <p>The Smart Healthcare assistant is an AI-powered tool developed to assist users in accessing healthcare information, predicting potential diseases based on symptoms, suggesting relevant medical tests, and providing recommendations for healthcare facilities nearby. It leverages advanced AI technologies, including the Gemini AI model, to offer intelligent, fast, and reliable healthcare assistance.</p>
+                    <h2 class="section-title text-start">What is Smart Healthcare Assistant?</h2>
+                    <p class="lead">The Smart Healthcare Assistant is an advanced AI-powered platform that revolutionizes how you access healthcare information and support. Using the cutting-edge Gemini AI model, we provide intelligent assistance for symptom analysis, disease prediction, and healthcare facility recommendations.</p>
                 </div>
                 <div class="col-md-6">
-                    <img src="/static/images/doctor.png" alt="About Us" class="img-fluid rounded shadow">
+                    <img src="/static/images/doctor.png" alt="About Us" class="img-fluid rounded-3 shadow-lg">
                 </div>
             </div>
         </section>
 
         <!-- Features Section -->
         <section class="mb-5">
-            <h2>Features</h2>
-            <div class="row row-cols-1 row-cols-md-2 g-4">
-                <div class="col">
-                    <div class="card shadow h-100 d-flex flex-row align-items-center">
-                        <img src="/static/images/animation3.gif" alt="Disease Prediction" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
+            <h2 class="section-title text-center">Our Features</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="feature-card card d-flex flex-row align-items-center p-3">
+                        <img src="/static/images/animation3.gif" alt="Disease Prediction" class="feature-icon">
                         <div class="card-body">
-                            <h5 class="card-title">Disease Prediction</h5>
-                            <p class="card-text">Enter your symptoms, and the chatbot analyzes them to provide potential diagnoses.</p>
+                            <h5 class="card-title text-primary">Disease Prediction</h5>
+                            <p class="card-text">Advanced symptom analysis for accurate disease prediction using AI technology.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card shadow h-100 d-flex flex-row align-items-center">
-                        <img src="/static/images/animation5.gif" alt="Test Recommendation" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
+                <div class="col-md-6">
+                    <div class="feature-card card d-flex flex-row align-items-center p-3">
+                        <img src="/static/images/animation5.gif" alt="Test Recommendation" class="feature-icon">
                         <div class="card-body">
-                            <h5 class="card-title">Test Recommendations</h5>
-                            <p class="card-text">The chatbot suggests relevant medical tests for further evaluation based on your symptoms.</p>
+                            <h5 class="card-title text-primary">Test Recommendations</h5>
+                            <p class="card-text">Personalized medical test suggestions based on your symptoms and condition.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card shadow h-100 d-flex flex-row align-items-center">
-                        <img src="/static/images/animation6.gif" alt="Healthcare Finder" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
+                <div class="col-md-6">
+                    <div class="feature-card card d-flex flex-row align-items-center p-3">
+                        <img src="/static/images/animation6.gif" alt="Healthcare Finder" class="feature-icon">
                         <div class="card-body">
-                            <h5 class="card-title">Healthcare Facility Finder</h5>
-                            <p class="card-text">Locate nearby clinics, hospitals, and labs with ratings and pricing using Google Maps integration.</p>
+                            <h5 class="card-title text-primary">Healthcare Facility Finder</h5>
+                            <p class="card-text">Find and compare nearby healthcare facilities with integrated Google Maps.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card shadow h-100 d-flex flex-row align-items-center">
-                        <img src="/static/images/animation7.gif" alt="Educational Support" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
+                <div class="col-md-6">
+                    <div class="feature-card card d-flex flex-row align-items-center p-3">
+                        <img src="/static/images/animation7.gif" alt="Educational Support" class="feature-icon">
                         <div class="card-body">
-                            <h5 class="card-title">Educational Support</h5>
-                            <p class="card-text">Provides detailed information about diseases, precautions, and treatment options.</p>
+                            <h5 class="card-title text-primary">Educational Support</h5>
+                            <p class="card-text">Comprehensive information about health conditions and preventive measures.</p>
                         </div>
                     </div>
                 </div>
@@ -97,44 +227,44 @@
 
         <!-- Limitations Section -->
         <section class="mb-5">
-            <h2>Limitations and Warnings</h2>
-            <ul class="list-group">
-                <li class="list-group-item"><strong>Not a Substitute for Professional Medical Advice:</strong> This chatbot is for assistance and education, not for replacing professional medical consultation.</li>
-                <li class="list-group-item"><strong>Accuracy May Vary:</strong> The AI's predictions may not always be accurate or comprehensive.</li>
-                <li class="list-group-item"><strong>User Responsibility:</strong> Users should seek immediate medical attention for emergencies or critical health concerns.</li>
-                <li class="list-group-item"><strong>Data Privacy:</strong> Avoid sharing sensitive personal or medical data that could compromise privacy.</li>
-            </ul>
-        </section>
-
-        <!-- How It Works Section -->
-        <section class="mb-5">
-            <h2>How It Works</h2>
-            <div class="card shadow">
-                <div class="card-body">
-                    <p>The chatbot processes user inputs, such as symptoms or queries, through its AI engine to generate meaningful responses. For disease prediction, the system uses data-driven models to analyze patterns and suggest potential outcomes. Additionally, it integrates with external APIs like Google Maps to fetch real-time location-based data for healthcare facilities.</p>
+            <h2 class="section-title text-center">Important Notes</h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="limitation-item">
+                        <h5 class="text-primary">Not a Substitute for Professional Care</h5>
+                        <p class="mb-0">Our AI assistant complements but does not replace professional medical consultation.</p>
+                    </div>
+                    <div class="limitation-item">
+                        <h5 class="text-primary">Accuracy Considerations</h5>
+                        <p class="mb-0">AI predictions serve as guidance and may not cover all possible medical scenarios.</p>
+                    </div>
+                    <div class="limitation-item">
+                        <h5 class="text-primary">Emergency Situations</h5>
+                        <p class="mb-0">Seek immediate medical attention for urgent health concerns.</p>
+                    </div>
+                    <div class="limitation-item">
+                        <h5 class="text-primary">Privacy First</h5>
+                        <p class="mb-0">We prioritize your data privacy and security in all interactions.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Vision Section -->
-        <section class="mb-5 text-center">
-            <h2>Our Vision</h2>
-            <p>We aim to bridge the gap between healthcare services and users by providing accessible and intelligent assistance at your fingertips. Our goal is to empower individuals with knowledge and tools to make informed healthcare decisions and improve their overall well-being.</p>
-        </section>
-
-        <!-- Contact Us Section -->
-        <section class="mb-5">
-            <h2>Contact Us</h2>
-            <p>If you have questions, suggestions, or feedback, contact us at khanbasharat3a1@gmail.com</p>
+        <!-- Contact Section -->
+        <section class="contact-section text-center">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="mb-4">Have questions or feedback? We'd love to hear from you!</p>
+            <p class="lead mb-0">Email us at: <a href="mailto:khanbasharat3a1@gmail.com" class="text-primary">khanbasharat3a1@gmail.com</a></p>
         </section>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-primary text-light text-center py-3">
-        <p>&copy; 2024 Smart Healthcare Assistant. All Rights Reserved.</p>
+    <footer class="text-center text-white">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 Smart Healthcare Assistant. All Rights Reserved.</p>
+        </div>
     </footer>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
