@@ -6,144 +6,14 @@
     <title>About Us - Smart Healthcare Assistant</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-
-        .navbar {
-            background: linear-gradient(to right, #ffffff, #f8f9fa);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-brand {
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        .navbar-brand:hover {
-            transform: scale(1.05);
-        }
-
-        .nav-link {
-            position: relative;
-            font-size: 1.1rem;
-            margin: 0 10px;
-            padding: 5px 0;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: #005fa3;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .hero-section {
-            background: linear-gradient(135deg, #005fa3 0%, #0093E9 100%);
-            padding: 4rem 0;
-            color: white;
-            border-radius: 0 0 50px 50px;
-            margin-bottom: 4rem;
-        }
-
-        .feature-card {
-            border: none;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            overflow: hidden;
-            height: 100%;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 95, 163, 0.1);
-        }
-
-        .feature-icon {
-            width: 100px;
-            height: 100px;
-            border-radius: 15px;
-            object-fit: cover;
-            border: 3px solid #f8f9fa;
-        }
-
-        .section-title {
-            color: #005fa3;
-            font-weight: 700;
-            position: relative;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background-color: #005fa3;
-        }
-
-        .limitation-item {
-            background: white;
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid #005fa3;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .limitation-item:hover {
-            transform: translateX(10px);
-        }
-
-        .contact-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        footer {
-            background: linear-gradient(135deg, #005fa3 0%, #0093E9 100%);
-            padding: 2rem 0;
-            margin-top: 4rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 2rem 0;
-                border-radius: 0 0 25px 25px;
-            }
-
-            .feature-card {
-                margin-bottom: 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="static/css/styles3.css">
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="/">
                 <img src="/static/images/icon 1.png" alt="Logo" width="50" class="me-2">
-                <span class="fw-bold" style="color: #005fa3">Smart Healthcare Assistant</span>
+                <span class="fw-bold">Smart Healthcare Assistant</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -159,7 +29,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero-section text-center">
         <div class="container">
             <h1 class="display-4 fw-bold mb-3">About Smart Healthcare Assistant</h1>
@@ -167,9 +36,7 @@
         </div>
     </section>
 
-    <!-- Main Content -->
     <div class="container">
-        <!-- About Section -->
         <section class="mb-5">
             <div class="row align-items-center">
                 <div class="col-md-6">
@@ -182,8 +49,7 @@
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section class="mb-5">
+        <section class="features-section mb-5">
             <h2 class="section-title text-center">Our Features</h2>
             <div class="row g-4">
                 <div class="col-md-6">
@@ -225,8 +91,46 @@
             </div>
         </section>
 
-        <!-- Limitations Section -->
-        <section class="mb-5">
+        <section class="how-it-works-section mb-5">
+            <h2 class="section-title text-center">How It Works</h2>
+            <div class="process-card">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <h5>Input Processing</h5>
+                            <p>User symptoms and queries are analyzed using the OpenAI API, leveraging advanced natural language processing to interpret and understand input effectively.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <h5>Intelligent Response Generation</h5>
+                            <p>The AI provides accurate and context-aware guidance based on user input by accessing a vast knowledge base, ensuring personalized and reliable assistance.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <h5>API Integration</h5>
+                            <p>Integrated with Google Maps API, the system offers real-time recommendations for nearby healthcare facilities, including clinics, hospitals, and pharmacies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="vision-section mb-5">
+            <h2 class="section-title text-center">Our Vision</h2>
+            <div class="vision-card text-center">
+                <div class="vision-icon mb-4">
+                </div>
+                <p class="vision-text">We aim to bridge the gap between healthcare services and users by providing accessible and intelligent assistance at your fingertips. Our goal is to empower individuals with knowledge and tools to make informed healthcare decisions and improve their overall well-being.</p>
+            </div>
+        </section>
+
+        <section class="limitations-section mb-5">
             <h2 class="section-title text-center">Important Notes</h2>
             <div class="row">
                 <div class="col-12">
@@ -250,7 +154,6 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section class="contact-section text-center">
             <h2 class="section-title">Get in Touch</h2>
             <p class="mb-4">Have questions or feedback? We'd love to hear from you!</p>
@@ -258,7 +161,6 @@
         </section>
     </div>
 
-    <!-- Footer -->
     <footer class="text-center text-white">
         <div class="container">
             <p class="mb-0">&copy; 2024 Smart Healthcare Assistant. All Rights Reserved.</p>
