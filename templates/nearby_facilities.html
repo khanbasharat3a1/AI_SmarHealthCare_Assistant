@@ -21,10 +21,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/chatbot">Chatbot</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/about-us">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/nearby_facilities">Nearby Facilities</a></li>
+                        <li class="nav-item"><a class="nav-link {{ 'active' if request.path == '/' }}" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link {{ 'active' if request.path == '/chatbot' }}" href="/chatbot">Chatbot</a></li>
+                        <li class="nav-item"><a class="nav-link {{ 'active' if request.path == '/about-us' }}" href="/about-us">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link {{ 'active' if request.path == '/nearby_facilities' }}" href="/nearby_facilities">Nearby Facilities</a></li>
                     </ul>
                 </div>
             </div>

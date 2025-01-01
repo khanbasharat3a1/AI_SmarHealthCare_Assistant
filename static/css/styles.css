@@ -17,22 +17,49 @@ ul li {
 }
 
 /* Navbar */
+.navbar {
+    background: linear-gradient(to right, #ffffff, #f8f9fa);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
 .navbar-brand {
     font-size: 1.5rem;
+    transition: transform 0.3s ease;
 }
-
-.nav-link {
-    font-size: 1rem;
-    margin-left: 10px;
+.navbar-brand:hover {
+    transform: scale(1.05);
 }
-
-.nav-link:hover {
-    color: #ff7043;
-}
-
-.bg-primary{
+.navbar-brand span {
     color: #005fa3;
 }
+.nav-link {
+    position: relative;
+    font-size: 1.1rem;
+    margin: 0 10px;
+    padding: 5px 0;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #005fa3;
+    transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* New styles for active state */
+.nav-link.active {
+    color: #005fa3 !important;
+    font-weight: 600;
+}
+.nav-link.active::after {
+    width: 100%;
+}
+
 
 
 /* Hero Section */
