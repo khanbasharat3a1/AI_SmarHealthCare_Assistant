@@ -147,5 +147,5 @@ Developer: Basharat Ahmad Khan
 
 Email: khanbasharat3a1@gmail.com
 
-Phone: (+91) 8899977743
+Phone: (+91) 8899977743.
 
